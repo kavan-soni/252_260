@@ -1,0 +1,105 @@
+Dt: 01/26/23
+Human Centric
+Representations of unsupervised learnings
+Systems need some kind of abstraction and generalization
+Transferring abilities from one task to another.
+
+Dynamical Systems, Optimal Control, Intrinsic Motivation, Representation Learning, Empowerment2
+
+Control systems from samples
+What actions are needed for optimal dynamics when we don’t have the dynamics.
+We can work from high dimensional inputs, we don’t need all specifics of data
+
+ML and RL similarity is  -> Generalize something that is unseen
+
+In ML, we take unseen x and predict a label y. We try to predict optimal y. The goal is instantaneous. Ground truth outputs in training
+In RL, we don’t have notion of optimality. The goal in RL is to reach to goal in future. Ground Truth answer is unknown. We only know if we passed or failed( meaning we only know the reward)
+
+Sequential decision making
+
+Check Compass and study reference material and slides
+
+OpenAI robot hand and cube
+PPO
+SAC
+DDPG
+
+Behavior Cloning - less powerful than RL
+ML assumption - I.i.d - This assumption is not realistic for RL
+DQN- how to improve training conditions so when we don’t have I.i.d
+
+When we don’t have explicit extrinsic goal, agent can define goal by itself called intrinsic learning
+
+In RL we don’t provide optimal actions, we provide reward function. Reward structure is much less restricted. If a particular actions makes our state closer to final goal, the action will have higher reward signal. Reward structure is decided by policy.
+
+Goal in RL is an outcome of maximizing a cumulative reward
+
+
+Dt: 01/31/23
+
+Inverted Pendulum - potential embedded/ML/robotics project
+
+Probabilistic Reasoning - General, Marginal, Discrete, Gaussian
+Sequence of probabilities
+Why intelligence is needed? Because there are constraints in the physical world. To reach the goal within the physical constraints, we need to distribute actions over time. Hence, sequential learning is needed
+Models help us factorize/represent probabilities -> eg. Bayesian Networks
+P(a0s1a1s2a2s3a3s4….|s0)
+ 
+Types of AI problems  based on C- Control, O- Observability(if we know full state)
+CO - Markov Decision Process
+CO’ - Partial observable MDP - we won’t study this much in 252
+C’O - Markov Chains
+C’O’ - state estimation  - Hidden Markov Model, Kalman Filter - In HMM we don’t have control or observability - the dynamics are hidden
+Physical devices have limitations so we may not have full state of agent/env. But we can have integrations of physical sensors.
+Entropic constraint - ???
+Properties of probabilities over sequences -> which probability is better, how to compare probabilities, how to quantify uncertainity
+Entropy of probability, Mutual information, Distance between probability (DKL)
+Relationship b/w entropy and uncertainty - > entropy is surprise factor
+Entropy is measured in bits, its scalar -> try understand this in detail
+If entropy is more we need more experimentations to get deterministic value of probabilities
+
+
+Where do rewards come from? In human body and in RL agents
+Human beings are driven by reward, we work for rewards that are so sparse in life that we may achieve them not more than once in life. Basal Ganglia
+If we provide actions as input we need to provide vector that spans many features, but rewards are scalar
+The complexity of formulating a vector as input is insanely complicated, however providing rewards are much sparse I.e. requires much less information and requires much less domain knowledge
+Diffusion towards random goal
+Sparse reward problem
+Inverse Distance weighting
+
+How to design rewards? What is a good reward? Intelligence of an agent is directly related to the design of reward system
+algorithms based on Continuous vs discrete action space
+Deepmind in its 1st paper published in Nature contributed wrt how to solve unavailability of iid data for RL tasks
+RL is a loop of perception and action between agent and environment
+Multiple Armed Bandit
+Assignment 1 : representation, Variational encoders
+
+Pertaining perception and action parts separately, end-to-end approach
+Extra reading material for today — ???
+
+Dt: 02/02/23
+We cannot say where agent will be at what state at a future time so we work with probabilities
+
+AI solutions by search methods
+Heuristic based(a*) vs uniformed(bfs, dfs, Djikstra’s) search techniques
+
+Learning is much harder when environment is fully stochastic bcoz policy don’t determine the actions
+
+Struct search
+	state space
+	valid action function
+	transition function
+	reward function
+End
+
+Agent is policy, rest is environment
+Transition is a function from spate- action space to state space  [s’ = T(s, a)]
+Reward is a function from state-action-state space to a scalar  [R : X,A,X -> R']
+Expected Reward = P(X'|X,A).R(X,A,X')
+
+Understand difference between explicit and expected reward. 
+We use expected reward for policy formulation bcoz the dynamics are stochastic, not deterministic.
+
+Agent searches a sequence of actions to maximize total accumulated reward
+
+
