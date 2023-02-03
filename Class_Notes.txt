@@ -1,4 +1,5 @@
 Dt: 01/26/23
+
 Human Centric
 Representations of unsupervised learnings
 Systems need some kind of abstraction and generalization
@@ -78,6 +79,7 @@ Pertaining perception and action parts separately, end-to-end approach
 Extra reading material for today — ???
 
 Dt: 02/02/23
+
 We cannot say where agent will be at what state at a future time so we work with probabilities
 
 AI solutions by search methods
@@ -102,4 +104,23 @@ We use expected reward for policy formulation bcoz the dynamics are stochastic, 
 
 Agent searches a sequence of actions to maximize total accumulated reward
 
+Multiple Armed Bandit - simplest problem in RL
+reward distibution is different for every arm of slot machine
+If you know one arm has high probability of high reward, agent just needs to keep pulling the arm
+expected reward from arm1 would be more than expected reward from any other arm
+Problem is only casino knows the reward distribution. An agent has to figure out which arm to pull based to its learning.
+An agent has to know the expected reward. Agent maintains a table that stores the expected reward from each arm.
+To efficiently use of computaion power and storage, we calculate new estimate reward from a particular arm incrementally
 
+Since trials are limited, agent has to decide whether to keep pulling the same arm or switch to a new arm.
+Greey method is to decide on only pulling the arm that has maximum expected reward at some point and disregard other arms.
+
+Incremental Implementation : New Estimate <- Old Estimate + Stepsize[Target - OldEstimate], this is basis of Q learning
+Stepsize decides how much new estimate depends on old estimate 
+
+Upper Confidence Bound action selection
+can we quantify how not be greedy and do a little exploration and decide which arm to pull.
+
+In slot machine, states are iid because one state doesnt affect outcome of next state. Its not sequential.
+
+Home assignement 1 : implement Multiple Armed Bandit
