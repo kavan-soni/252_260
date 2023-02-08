@@ -104,7 +104,8 @@ We use expected reward for policy formulation bcoz the dynamics are stochastic, 
 
 Agent searches a sequence of actions to maximize total accumulated reward
 
-Multiple Armed Bandit - simplest problem in RL
+Multiple Armed Bandit - simplest problem in RL - first problem in active learning from samples
+
 reward distibution is different for every arm of slot machine
 If you know one arm has high probability of high reward, agent just needs to keep pulling the arm
 expected reward from arm1 would be more than expected reward from any other arm
@@ -124,3 +125,66 @@ can we quantify how not be greedy and do a little exploration and decide which a
 In slot machine, states are iid because one state doesnt affect outcome of next state. Its not sequential.
 
 Home assignement 1 : implement Multiple Armed Bandit
+
+Dt: 02/07/23
+
+ML@SJSU -> We meet on Fridays, 11 AM - 1 PM, ideally in-person at BBC 326 but also on Zoom.
+problem is simple if you dont need very long vectors
+
+Bayesian Networks -> multiplication of probability  factorizations. 
+Once you know current state and action, now we can calculate everything, including the probability to final state. 
+We want to maximze this probability to reach the final state (goal).
+
+heuristic is estimated cost from current state to goal
+Evaluation function = cost from initial to current node + cost from current node to final node
+A*  -> frequently used in robotics
+never overestimates the cost to reach goal and the heuristics are consistent 
+meaning if we reach to another state via another intermediate state, the cost will always be higher.
+
+Home assignment1  - > Implement A* to solve navigation in maze.
+
+Multiple Armed Bandit Problem
+Incremental implementation -> learning Q table from samples -> Q learning
+seminal paper by deepmind published in nature
+
+Variational Encoders
+Represent policy as 
+We need general policy to dicreetize state space.
+For example, State space of inverted pendulum -> 2D -> angle of inclination, angular velocity
+State factorizes past from future, we dont need past info to determine future.
+
+Policy of action given state : ¶(A|S)
+Policy is determined by probability distribution. This prob dist is parameterised by neural network
+
+What is basic idea of auto encoding? 
+We want to take images and we want to find simpler or most important vector representation of the image. (Features or latent space)
+We either want to de-noise or do dimensionality reduction.
+We also want to decode the representation and we want the decoded image to be as close as possible to original image.
+Difference between original and decoded image is called as Loss (wrt the parameters chosen).
+We want to minimise the average loss on the chosen feature set.
+
+We want to train policy on this autoencoded features, and not on original images.
+Home assignment -> calculate images samples and generate parametric represnetations. 
+
+What is a convex function - ???
+How to minimise loss function -> stochastic gradient descent 
+
+How to find empirical covariance of data - ???
+
+What is usual disadvantages of autoencoding?
+We dont have any control on the encoded space. There could be anomalies in consistency.
+Meaning similar images can be mapped far away in the representation space, ans vice versa.
+It uses linear methods for vector representation. It is a deterministic method, hence inflexible.
+Remark: Autoencoding in simplest cases is PCA.
+
+We should instead use probability distributions in form of gaussian distribution.
+x = image, z = representation, theta and psi are feature sets
+encoding function f: P_theta(z|x)
+decoding function g: P_psi(x|z) 
+
+how to calculate difference between probabilities in gaussian space?
+We cannot use eucledian distance in gaussian space
+We use DKL function...we study this in next class.
+
+Next class -> Variational encoders.
+Next week -> 1 class with TA on sequential decision making
