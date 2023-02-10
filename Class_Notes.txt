@@ -188,3 +188,29 @@ We use DKL function...we study this in next class.
 
 Next class -> Variational encoders.
 Next week -> 1 class with TA on sequential decision making
+
+Dt: 02/09/23
+
+we add a weigh factor to A* because we cannot always have admissible solution.
+assignment to do : change weight factor W and observe the changes in states explored and cost of optimal path.
+Tradeoff is between past and future cost. We rely more on future cost to determine next state and less on past cost.
+
+A*, Uninformed, greedy best first search, weighted A* -> how W varies
+
+What is meaning of admissible heuristic?
+
+parameterized heuristics -???
+
+What is gaussian distribution - ???
+
+Discrete random variable -> prob function
+Continous random variable -> prob density
+
+What is inference? - Given observable data, how we can locate state with additional data
+uncertaininity will alwys be lesser in latter situation.
+
+Kalman Filter in next class.
+
+DKL function is measure of similarity between two probabilities.
+
+ELBO -Evident Lower Bound
