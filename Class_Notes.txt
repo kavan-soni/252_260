@@ -177,7 +177,7 @@ Meaning similar images can be mapped far away in the representation space, ans v
 It uses linear methods for vector representation. It is a deterministic method, hence inflexible.
 Remark: Autoencoding in simplest cases is PCA.
 
-We should instead use probability distributions in form of gaussian distribution.
+We should instead use probability distrib utions in form of gaussian distribution.
 x = image, z = representation, theta and psi are feature sets
 encoding function f: P_theta(z|x)
 decoding function g: P_psi(x|z) 
