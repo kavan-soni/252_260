@@ -227,7 +227,6 @@ Posterior entropy is always less than prior entropy, i.e, <----- This is a princ
 H(p(x|y)) <= H(p(x)) [Log sum inequality can be used to prove this]
 So we need more and more samples to reduce uncertainity.
 
-
 In gaussian case,
     var(x|y) = var(x) - var(xy)*1/var(y)*var(yx) [xy & yx are cross correlation between x and y; var(xy) is cross variance]
 dim:   2x2      2x2       2x3     3x3     3x2   
@@ -237,4 +236,8 @@ var(yx) needs independent noise factor , then it is = c*var(x)^2
 
 dynamics are hidden in segway, eg road surface, friction, wind, etc.
 
-
+Next class -> 
+-- Markov Decision Process, 
+-- What is Value function and how to write it? We will take example of segway. That will also be home assignment in coming weeks.
+-- Bellman recursive function
+-- If we know problem of estimation (from past), we will know how to solve problem of control (from future)
