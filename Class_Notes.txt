@@ -213,4 +213,28 @@ Kalman Filter in next class.
 
 DKL function is measure of similarity between two probabilities.
 
-ELBO -Evident Lower Bound
+ELBO - Evident Lower Bound
+
+Dt: 02/21/23
+
+We are trying to decrease uncertainity and increase knowledge
+It is simple to sample from gaussian distribution. It is trivial to build a gaussian model from empirical data.
+
+With given prior probability, we want to use new real time samples to increase uncertaininty or variance in gaussian random variable.
+For non-gaussian distribution, we want to decrease entropy.
+
+Posterior entropy is always less than prior entropy, i.e, <----- This is a principle of probability
+H(p(x|y)) <= H(p(x)) [Log sum inequality can be used to prove this]
+So we need more and more samples to reduce uncertainity.
+
+
+In gaussian case,
+    var(x|y) = var(x) - var(xy)*1/var(y)*var(yx) [xy & yx are cross correlation between x and y; var(xy) is cross variance]
+dim:   2x2      2x2       2x3     3x3     3x2   
+complex random variable, conjugate transpose, stochastic dynamics -> ????
+
+var(yx) needs independent noise factor , then it is = c*var(x)^2
+
+dynamics are hidden in segway, eg road surface, friction, wind, etc.
+
+
