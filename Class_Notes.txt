@@ -215,6 +215,10 @@ DKL function is measure of similarity between two probabilities.
 
 ELBO - Evident Lower Bound
 
+Dt: 02/14/23 -> Class missed
+
+Dt: 02/16/23 -> No class
+
 Dt: 02/21/23
 
 We are trying to decrease uncertainity and increase knowledge
@@ -241,3 +245,27 @@ Next class ->
 -- What is Value function and how to write it? We will take example of segway. That will also be home assignment in coming weeks.
 -- Bellman recursive function
 -- If we know problem of estimation (from past), we will know how to solve problem of control (from future)
+
+HW assignment1 : Openai gym and loop of training
+
+In PCS, CCA, we project the inputs.
+We dont do regularisation or smoothing. Much better option is to perform encoding.
+Latent space
+
+State of the art Unsupervised learning is what ? -> Variational Autoencoding
+
+Diffusion ?
+
+Variational Autoencoders
+[1906.02691] An Introduction to Variational Autoencoders - arXiv https://arxiv.org › cs
+Pascal Poupart Video playlist
+
+Empowerment, Direct experience
+Generate images from diffusion
+Implement loss function from some paper
+Do incremental stuff like this. This will help to get industrial AI jobs.
+
+Decision Making
+
+
+
