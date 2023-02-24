@@ -262,10 +262,16 @@ Pascal Poupart Video playlist
 
 Empowerment, Direct experience
 Generate images from diffusion
-Implement loss function from some paper
+Implement loss function from some paper. 
+Critique a paper. Understand things and point out what is unclear from the paper. 
 Do incremental stuff like this. This will help to get industrial AI jobs.
 
 Decision Making
 
+Dt: 02/23/23
 
+Minimum mean square estimation -> classic estimation problem in ML
 
+Value function
+
+Markov Decision Process
