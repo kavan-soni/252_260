@@ -1,8 +1,9 @@
 # 252_260
  
  
- CMPE 252 - Artificial Intelligence and Data Engineering (https://catalog.sjsu.edu/preview_course_nopop.php?catoid=12&coid=62552)
- CMPE 260 - Reinforcement Learning (https://catalog.sjsu.edu/preview_course_nopop.php?catoid=12&coid=62553)
+ - CMPE 252 - Artificial Intelligence and Data Engineering (https://catalog.sjsu.edu/preview_course_nopop.php?catoid=12&coid=62552)
+ 
+ - CMPE 260 - Reinforcement Learning (https://catalog.sjsu.edu/preview_course_nopop.php?catoid=12&coid=62553)
 
 
  
