@@ -25,12 +25,12 @@ def train_vae():
     #########################
 
     # try different environments
-    env = gym.make("CartPole-v1")
+    env = gym.make("CartPole-v1", render_mode='rgb_array')
 
     #########################
     # first observation from the environment
     obs = env.reset()
-    img = env.render(mode='rgb_array')
+    img = env.render()
     crop_dim = (
         int(crop_proportions[0] * img.shape[0]),
         int(crop_proportions[1] * img.shape[1]),
@@ -49,8 +49,8 @@ def train_vae():
     # initialize the VAE
     # VAE model
     vae = MyVAE(
-        in_channels=input_channels,
-        latent_dim=latent_dim,
+        in_channels = input_channels,
+        latent_dim = latent_dim,
     ).to(device)
     optimizer = optim.Adam(vae.parameters(), lr=0.001)
 
@@ -64,16 +64,18 @@ def train_vae():
     for i in range(training_size):
         frame_idx += 1
 
+        if frame_idx == 20 : env.reset()
+
         # get a random action in this environment
         action = env.action_space.sample()
 
         # obs is observation data from the env. 
         # Look at the gym code to find which one is a pole angle. 
         # https://github.com/openai/gym/blob/master/gym/envs/classic_control/cartpole.py
-        obs, reward, done, info = env.step(action)
+        obs, reward, terminated, truncated, info = env.step(action)
 
         # get pixel observations, crop, and resize
-        img = env.render(mode='rgb_array')
+        img = env.render()
         img = img[crop_dim[0]: crop_dim[2], crop_dim[1]: crop_dim[3], :]
         img = cv2.resize(img, dsize=img_dim, interpolation=cv2.INTER_CUBIC)
         # how the model will see the image after crop and resize
@@ -85,8 +87,9 @@ def train_vae():
 
         # add some conditional logic to save the images you need
         # collect data
-        # if obs???:
-        imgs[i] = img
+        # collect data only if pole angle in range [-0.3 rad, 0.3 rad]
+        if -0.3 <= obs[2] <= 0.3 : 
+            imgs[i] = img
 
         #################
 
@@ -94,7 +97,7 @@ def train_vae():
 
         # update the reset conditions to save the images you need
         # if ???:
-        if done:
+        if truncated or terminated: # https://stackoverflow.com/questions/73195438/openai-gyms-env-step-what-are-the-values
             obs = env.reset()
             frame_idx = 0
 
@@ -108,6 +111,7 @@ def train_vae():
 
     # train VAE
     for i in range(n_epochs):
+
         # observations for cvae to use as labels
         start_idx = random.randint(0, training_size - batch_size)
 

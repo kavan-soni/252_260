@@ -24,7 +24,7 @@ In this assignment we will use the [CartPole](https://gym.openai.com/envs/CartPo
 1. [Install Anaconda](https://www.anaconda.com/products/individual)
 
 2. Create the env    
-`conda create a1 python=3.8` 
+`conda create -n a1 python=3.8` 
 
 3. Activate the env     
 `conda activate a1`    

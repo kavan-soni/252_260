@@ -15,7 +15,6 @@ class MyVAE(nn.Module):
         self.latent_dim = latent_dim
 
         # Encoder
-
         modules = []
         if hidden_dims is None:
             hidden_dims = [32, 64, 128, 256, 512]
@@ -24,14 +23,13 @@ class MyVAE(nn.Module):
 
         ##############################
         # replace ??? with proper local variables
-
         in_dim = in_channels
         for h_dim in self.hidden_dims:
             # one convolution layer
             modules.append(
                 nn.Sequential(
-                    nn.Conv2d(in_channels=???,
-                              out_channels=???,
+                    nn.Conv2d(in_channels= in_dim,
+                              out_channels=h_dim,
                               kernel_size=3,
                               stride=2,
                               padding=1),
@@ -41,18 +39,17 @@ class MyVAE(nn.Module):
             in_dim = h_dim
 
         self.encoder = nn.Sequential(*modules)
-
         ##############################
 
         ##############################
         # the central hidden layer of the model.
 
         # autoencoder version of the representation layer. This is used by default
-        self.z_simple = nn.Linear(self.hidden_dims[-1] * 4, ???)
+        self.z_simple = nn.Linear(self.hidden_dims[-1] * 4, self.latent_dim)
 
         # VAE Reparametrization Layer
-        self.z_mu = nn.Linear(hidden_dims[-1] * 4, ???)
-        self.z_var = nn.Linear(hidden_dims[-1] * 4, ???)
+        self.z_mu = nn.Linear(hidden_dims[-1] * 4, self.latent_dim)
+        self.z_var = nn.Linear(hidden_dims[-1] * 4, self.latent_dim)
 
         ##############################
 
@@ -103,10 +100,10 @@ class MyVAE(nn.Module):
         # Compute mean and variance of the latent distribution
         # Use mu and var layers we defined in the init
 
-        # mu = ???
-        # log_var = ???
-        # z = [mu, log_var]
-        z = self.z_simple(z)
+        mu = self.z_mu(z)
+        log_var = self.z_var(z)
+        z = [mu, log_var]
+        #z = self.z_simple(z)
 
         ##############################
 
@@ -130,7 +127,7 @@ class MyVAE(nn.Module):
 
         # hint: torch.randn_like samples from normal distribution,
         # and returns a tensor of the same size as its input
-        eps = ???
+        eps = torch.randn_like(mu)
 
         ##############################
 
@@ -141,12 +138,12 @@ class MyVAE(nn.Module):
         ##############################
         # update this along with reparametrize() and encode() to turn this into vae
 
-        z = self.encode(x)
-        mu = torch.zeros_like(z)
-        log_var = torch.zeros_like(z)
+        #z = self.encode(x)
+        #mu = torch.zeros_like(z)
+        #log_var = torch.zeros_like(z)
 
-        # mu, log_var = self.encode(x)
-        # z = self.reparameterize(mu, log_var)
+        mu, log_var = self.encode(x)
+        z = self.reparameterize(mu, log_var)
 
         ##############################
 
